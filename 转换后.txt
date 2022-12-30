@@ -1,0 +1,15 @@
+print(snapshot.connectionState);
+print(snapshot.data);
+String title = '';
+if (snapshot.connectionState == ConnectionState.waiting) {
+  //初始化有值会在waiting带过来
+  if (snapshot.data == null) {
+    title = 'stream初始化没有数据';
+  } else {
+    title = 'stream初始化数据为 ${snapshot.data}';
+  }
+} else if (snapshot.connectionState == ConnectionState.active) {
+  //监听到变化会在active带过来
+  title = \"收到stream更新数据了 ${snapshot.data}\";
+}
+return Text('Button状态$title');
