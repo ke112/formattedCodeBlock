@@ -22,8 +22,8 @@ leftSpace=0 #统一的左缩进的空格数
 function mulHandler() {
   newline=$(echo ${newline//\"/\\\"}) #把字符串里边所有的"前都加上反斜线\"
   if [[ $j == 1 ]]; then
-    echo "\"代码块描述\": {" >>$t2
-    echo "  \"prefix\": \"代码块快捷键\"," >>$t2
+    echo "\"描述\": {" >>$t2
+    echo "  \"prefix\": \"快捷键\"," >>$t2
     echo "  \"body\": [" >>$t2
     echo "    \"$newline"\"\, >>$t2
   else
@@ -40,7 +40,7 @@ for line in $(cat $t1); do
     #每行的空格数
     current=$(echo "$line" | awk '{str=length($0); sub(/^[ ]*/,"",$0); print str-length($0);}')
     cha=$(($current - $leftSpace))
-    echo $j '当前 '$current '左边统一空格 '$leftSpace '差值 '$cha
+    # echo $j '当前 '$current '左边统一空格 '$leftSpace '差值 '$cha
 
     if [[ $j == 1 ]]; then
       newline=${line:$current} #第一行缩进到最左侧即可
