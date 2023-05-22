@@ -70,4 +70,4 @@ if [[ $1 != 2 ]]; then
 fi
 
 echo '转换完成'
-open $t2
+open -n $t2
